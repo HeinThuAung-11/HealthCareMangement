@@ -1,12 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {Footer} from "./common/layout/Footer.jsx";
+import {NavBar} from "./common/layout/NavBar.jsx";
+import {Container} from "@mui/material";
 
-export default function App() {
+// eslint-disable-next-line react/prop-types
+export default function App({children}) {
     return (
-        <h1 className="text-3xl font-bold underline">
-            Hello world!
-        </h1>
+        <div>
+            <NavBar/>
+            <Container maxWidth="2xl">
+                <main>{children}</main>
+            </Container>
+            <Footer/>
+        </div>
     )
 }
