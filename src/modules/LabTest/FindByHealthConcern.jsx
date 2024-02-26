@@ -38,7 +38,7 @@ export const FindByHealthConcern = () => {
                         <h1 className={"font-bold text-lg my-4"}>Kidney</h1>
                     </div>
                 </Link>
-                <Link to={"/#"}>
+                <Link to={"#"}>
                     <div className={"flex flex-col justify-center items-center"}>
                         <img src={digest} alt={"fever"} className={"rounded-full w-[150px] h-[150px]"}/>
                         <h1 className={"font-bold text-lg my-4"}>Digestion</h1>
