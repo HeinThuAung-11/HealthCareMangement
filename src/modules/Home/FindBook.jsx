@@ -34,7 +34,7 @@ export const SearchBar = () => {
                     <FormControl sx={{width: '35ch'}} variant="outlined">
                         <OutlinedInput
                             id="outlined-adornment-weight"
-                            {...register("location", {})}
+                            {...register("doctor", {})}
                             aria-describedby="outlined-weight-helper-text"
                             inputProps={{
                                 'aria-label': 'location',
@@ -43,7 +43,6 @@ export const SearchBar = () => {
                             startAdornment={
                                 <InputAdornment position="start"><CiSearch/></InputAdornment>
                             }
-
                         />
                     </FormControl>
                 </form>
