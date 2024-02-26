@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom";
-import fever from "./fever.jpg";
-import diabetes from "./diabetes.jpeg";
-import skin from "./skin.jpg";
-import kidney from "./kidney.jpeg";
-import digest from "./digestion.jpg";
-import cancer from "./cancer.jpg";
+import fever from "./images/fever.jpg";
+import diabetes from "./images/diabetes.jpeg";
+import skin from "./images/skin.jpg";
+import kidney from "./images/kidney.jpeg";
+import digest from "./images/digestion.jpg";
+import cancer from "./images/cancer.jpg";
 
 export const FindByHealthConcern = () => {
     return (

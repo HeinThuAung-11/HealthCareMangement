@@ -1,6 +1,6 @@
-import g2 from "./g2.jpg"
-import g3 from "./g3.jpg"
-import g4 from "./g4.jpg"
+import g2 from "./images/g2.jpg"
+import g3 from "./images/g3.jpg"
+import g4 from "./images/g4.jpg"
 
 export const LabSample = () => {
 

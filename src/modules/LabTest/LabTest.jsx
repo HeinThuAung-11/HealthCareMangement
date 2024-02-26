@@ -1,5 +1,5 @@
 import {FindByHealthConcern} from "./FindByHealthConcern.jsx";
-import {OtherFeatures} from "./OtherFeatures.jsx";
+import {OtherFeatures} from "../../common/components/OtherFeatures.jsx";
 import {LabSample} from "./LabSample.jsx";
 
 export const LabTest = () => {
