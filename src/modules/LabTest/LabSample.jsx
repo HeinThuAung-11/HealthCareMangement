@@ -7,7 +7,7 @@ export const LabSample = () => {
     return (
         <div className={"border-2 border-b-blue-700 flex flex-col gap-10 p-10"}>
             <h1 className={"font-bold text-blue-700 text-4xl text-center"}>Laboratory Sample</h1>
-            <div className={"flex  justify-around items-center "}>
+            <div className={"flex  justify-around items-center gap-5"}>
                 <div className={"flex flex-col w-1/4"}>
                     <div className={"bg-blue-700"}>
                         <img src={g4} alt={g4}/>
