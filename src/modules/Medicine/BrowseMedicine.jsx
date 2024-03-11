@@ -11,7 +11,7 @@ import other from "./images/other.jpg"
 export const BrowseMedicine = () => {
     return (
         <>
-            <h1 className={"font-bold text-blue-700 text-4xl text-center my-5"}>Browse Medicines & Health Products</h1>
+            <h1 className={"font-bold text-blue-500 text-4xl text-center my-5 mt-10 mb-10"}>Browse Medicines & Health Products</h1>
             <div className={"grid grid-cols-12 gap-20"}>
                 <Medicine text={"Skin"} url={"skin"} img={skin}/>
                 <Medicine text={"Weight"} url={"weight"} img={weight}/>
@@ -28,7 +28,7 @@ export const BrowseMedicine = () => {
 
 const Medicine = ({text, url, img}) => {
     return (
-        <div className={"col-span-3 bg-blue-700 p-3"}>
+        <div className={"col-span-3 bg-blue-500 p-3 rounded-lg hover:scale-105 transition-transform duration-300"}>
             <Link to={url}>
                 <div>
                     <img src={img} alt={img} className={"h-[140px]"}/>
