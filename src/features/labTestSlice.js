@@ -9,7 +9,7 @@ let initialState = {
 export const apiGetLabTests = createAsyncThunk(
     "labTest/fetchTest",
     async () => {
-        const response = await axios.get(Labtest + "labtests/");
+        const response = await axios.get(Labtest + "labtests/api");
         return response.data;
     }
 )
@@ -18,11 +18,6 @@ export const labTestSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
         builder.addCase(apiGetLabTests.fulfilled, (state, action) => {
-            console.log(
-                "action extra reducer",
-                action.payload,
-                state.labTests
-            );
             state.labTests = action.payload;
         })
     }
