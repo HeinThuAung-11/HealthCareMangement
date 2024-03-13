@@ -1,12 +1,12 @@
 import {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "../../app/hooks.js";
 import {apiGetLabTests, getLabTests} from "../../features/labTestSlice.js";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export const TopBookedTests = () => {
     const dispatch = useAppDispatch();
     const data = useAppSelector(getLabTests)
-
+    const navigate = useNavigate();
     useEffect(() => {
         dispatch(apiGetLabTests())
     }, [dispatch]);
@@ -33,10 +33,12 @@ export const TopBookedTests = () => {
                             </div>
                         </Link>
                         <div className="p-6 pt-0 flex items-center justify-center">
+
                             <button
                                 className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 type="button"
                                 data-ripple-light="true"
+                                onClick={() => navigate('/Booking')}
                             >
                                 Book
                             </button>

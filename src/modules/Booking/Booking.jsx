@@ -31,14 +31,18 @@ export const Booking = () => {
         mode: "onTouched",
     })
     const [startDate, setStartDate] = useState(new Date());
-
+    const [selectDate, setSelectDate] = useState(new Date());
+    const [selectedTime, setSelectedTime] = useState("")
 
     // Submit your data into Redux store
     const onSubmit = (data) => {
         console.log(data)
         console.log('date', startDate)
+        console.log('selecetdate', selectDate)
+        console.log('selecttime', selectedTime)
     }
-
+    const afternoon = ['12:00PM', '12:30PM', '01:00PM', '01:30PM', '02:00PM', '02:30PM']
+    const evening = ['03:00PM', '03:30PM', '04:00PM', '04:30PM', '05:00PM', '05:30PM']
     return (
         <Box sx={{width: '100%'}} className={"px-72 py-10"}>
             <Stepper activeStep={activeStep}>
@@ -106,7 +110,7 @@ export const Booking = () => {
                                         <Controller
                                             name="gender"
                                             control={control}
-                                            defaultValue="Male" // Set a default value to avoid warning about uncontrolled component
+                                            defaultValue=""
                                             render={({field}) => (
                                                 <div className={"flex items-center justify-evenly"}>
                                                     <input {...field} type="radio" value="Male" id="male"/>
@@ -231,7 +235,52 @@ export const Booking = () => {
                                     </div>
                                 </>
                                 :
-                                <Typography sx={{mt: 2, mb: 1}}>Step {3}</Typography>
+                                <>
+                                    <h1 className={"text-2xl font-semibold my-5"}>Select Time Slot</h1>
+                                    <FormControl sx={{width: '50ch'}} variant="outlined">
+                                        <h3 className={"text-lg my-3"}>Select Your Date</h3>
+
+                                        <DatePicker
+                                            selected={selectDate}
+                                            onChange={(date) => setSelectDate(date)}
+                                            showYearDropdown
+                                            dateFormatCalendar="MMMM"
+                                            yearDropdownItemNumber={15}
+                                            scrollableYearDropdown
+                                            className="border border-gray-300 rounded-md p-2"
+                                        />
+                                    </FormControl>
+                                    <h3 className={"text-lg my-3"}>Select Your Time</h3>
+                                    <h3 className={"text-md my-3"}>Afternoon</h3>
+                                    <div className={"flex justify-evenly"}>
+                                        {afternoon.map(time => {
+                                            return <div
+                                                key={time}
+                                                onClick={() => setSelectedTime(time)}
+                                                className={`cursor-pointer border rounded-md w-[120px] h-[40px] flex items-center justify-center 
+                                                ${time === selectedTime ? 'bg-emerald-500 text-white' : 'border-emerald-500 text-emerald-500'}`}>
+                                                {time}
+                                            </div>
+                                        })
+                                        }
+
+                                    </div>
+                                    <h3 className={"text-md my-3"}>Afternoon</h3>
+                                    <div className={"flex justify-evenly"}>
+                                        {evening.map(time => {
+                                            return <div
+                                                key={time}
+                                                onClick={() => setSelectedTime(time)}
+                                                className={`cursor-pointer border rounded-md w-[120px] h-[40px]  flex items-center justify-center  
+                                                ${time === selectedTime ? 'bg-emerald-500 text-white' : 'border-emerald-500 text-emerald-500'}`}>
+                                                {time}
+                                            </div>
+                                        })
+                                        }
+
+                                    </div>
+
+                                </>
                         }
                         <Box sx={{display: 'flex', flexDirection: 'row', pt: 2, my: 3}}>
                             <Button
@@ -246,13 +295,13 @@ export const Booking = () => {
 
                             <Button onClick={(e) => {
                                 e.preventDefault(); // Prevent the default form submission
-                                if (activeStep === steps.length - 2) {
+                                if (activeStep === steps.length - 1) {
                                     handleSubmit(onSubmit)();
                                 } else {
                                     handleNext(); // Otherwise, proceed to the next step
                                 }
                             }}>
-                                {activeStep === steps.length - 2 ? 'Finish' : 'Next'}
+                                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                             </Button>
                         </Box>
                     </form>
