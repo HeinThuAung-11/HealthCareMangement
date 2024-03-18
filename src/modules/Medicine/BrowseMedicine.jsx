@@ -11,14 +11,15 @@ import other from "./images/other.jpg"
 export const BrowseMedicine = () => {
     return (
         <>
-            <h1 className={"font-bold text-blue-500 text-4xl text-center my-5 mt-10 mb-10"}>Browse Medicines & Health Products</h1>
+            <h1 className={"font-bold text-blue-500 text-4xl text-center my-5 mt-10 mb-10"}>Browse Medicines & Health
+                Products</h1>
             <div className={"grid grid-cols-12 gap-20"}>
                 <Medicine text={"Skin"} url={"skin"} img={skin}/>
                 <Medicine text={"Weight"} url={"weight"} img={weight}/>
                 <Medicine text={"Pain"} url={"pain"} img={pain}/>
                 <Medicine text={"Baby"} url={"baby"} img={baby}/>
                 <Medicine text={"Fit"} url={"fit"} img={fit}/>
-                <Medicine text={"Multi-Vitamins"} url={"multi-vitamins"} img={vita}/>
+                <Medicine text={"Multi-Vitamins"} url={"/multi-vitamins"} img={vita}/>
                 <Medicine text={"Hair"} url={"hair"} img={hair}/>
                 <Medicine text={"Others"} url={"others"} img={other}/>
             </div>

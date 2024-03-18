@@ -14,6 +14,7 @@ import {Reports} from "./modules/Reports/Reports.jsx";
 import {Cardiologist} from "./common/subModules/Cardiologist.jsx";
 import {Subarticles} from "./common/subModules/Subarticles.jsx";
 import {FindDoctor} from "./modules/FindDoctor/FindDoctor.jsx";
+import {MedicineList} from "./modules/Medicine/MedicineList.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
@@ -28,7 +29,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                             path={"/lab-tests/:labTestId"}
                             element={<LabTestDetail/>}
                         />
-                        <Route path={"/medicines"} element={<Medicine/>}/>
+                        <Route path={"/medicines"} element={<Medicine/>}>
+                        </Route>
+                        <Route path={"/multi-vitamins"} element={<MedicineList/>}/>
                         <Route path={"/booking"} element={<Booking/>}/>
                         <Route path={"/reports"} element={<Reports/>}/>
                         <Route

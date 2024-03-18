@@ -10,6 +10,10 @@ import {Controller, useForm} from "react-hook-form";
 import {FormControl, OutlinedInput} from "@mui/material";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {useSelector} from "react-redux";
+import {apiSaveBooking, getLabTestId} from "../../features/labTestSlice.js";
+import {useAppDispatch} from "../../app/hooks.js";
+import {useNavigate} from "react-router-dom";
 
 const steps = ['Insert Patient Detail', 'Select Patient Address', 'Select Time Slot'];
 
@@ -33,13 +37,22 @@ export const Booking = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [selectDate, setSelectDate] = useState(new Date());
     const [selectedTime, setSelectedTime] = useState("")
-
+    const labTestId = useSelector(getLabTestId)
+    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     // Submit your data into Redux store
-    const onSubmit = (data) => {
-        console.log(data)
-        console.log('date', startDate)
-        console.log('selecetdate', selectDate)
-        console.log('selecttime', selectedTime)
+    const onSubmit = async (data) => {
+        let userData = {
+            ...data,
+            dateOfBirth: startDate,
+            selectedTime,
+            selectDate,
+            labTestId
+        }
+        console.log(userData)
+        await dispatch(apiSaveBooking(userData))
+        navigate('/')
+
     }
     const afternoon = ['12:00PM', '12:30PM', '01:00PM', '01:30PM', '02:00PM', '02:30PM']
     const evening = ['03:00PM', '03:30PM', '04:00PM', '04:30PM', '05:00PM', '05:30PM']
@@ -265,7 +278,7 @@ export const Booking = () => {
                                         }
 
                                     </div>
-                                    <h3 className={"text-md my-3"}>Afternoon</h3>
+                                    <h3 className={"text-md my-3"}>Evening</h3>
                                     <div className={"flex justify-evenly"}>
                                         {evening.map(time => {
                                             return <div

@@ -5,9 +5,17 @@ import {Button} from "@mui/material";
 import sample from "./images/sample.png"
 import report from "./images/report.png"
 import offers from "./images/offers.png"
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import {useAppDispatch} from "../../app/hooks.js";
+import {SetLabTestId} from "../../features/labTestSlice.js";
 
 export const LabTestDetail = () => {
+    const dispatch = useAppDispatch();
+    const {labTestId} = useParams()
+    const handleClick = () => {
+        dispatch(SetLabTestId(labTestId));
+    };
+
     return (
         <div className={"grid grid-cols-12 mx-32 my-10"}>
             <img src={kidney} alt={"photo"} className={"col-span-4"}/>
@@ -26,7 +34,7 @@ export const LabTestDetail = () => {
                 </div>
                 <div className={"flex justify-between"}>
                     <h1 className={"text-2xl font-bold"}>£50</h1>
-                    <Link to="/booking">
+                    <Link to="/Booking" onClick={handleClick}>
                         <Button variant="contained">Book Now</Button>
                     </Link>
 
