@@ -1,77 +1,20 @@
+import {useEffect, useState} from "react";
+
 export const MedicineList = () => {
 
-    const medicine = [
-        {
-            url: "https://images.unsplash.com/photo-1662673143520-721ed4fbe965?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Multivitamin Tablets",
-            price: "£10",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        },
-        {
-            url: "https://images.unsplash.com/photo-1606015989047-2ecc98a23ae1?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Multivitamin Capsules",
-            price: "£15",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        },
-        {
-            url: "https://images.unsplash.com/photo-1593181581874-361761582b9e?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Multivitamin Gummies",
-            price: "£12",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        },
-        {
-            url: "https://images.unsplash.com/photo-1668440246511-539c5438518d?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Liquid Multivitamins",
-            price: "£20",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        },
-        {
-            url: "https://plus.unsplash.com/premium_photo-1690534068749-524a21d89307?q=80&w=2272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Multivitamin Powder",
-            price: "£18",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        },
-        {
-            url: "https://plus.unsplash.com/premium_photo-1690534069586-960dd7cfeb39?q=80&w=2272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Multivitamin Drops",
-            price: "£25",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        },
-        {
-            url: "https://images.unsplash.com/photo-1665758574784-7e549d53c7f7?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Multivitamin Chewables",
-            price: "£17",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        },
-        {
-            url: "https://images.unsplash.com/photo-1620892604314-51750d76e6ec?q=80&w=3085&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Multivitamin Softgels",
-            price: "£22",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        },
-        {
-            url: "https://images.unsplash.com/photo-1627467959547-8e44da7aa00a?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Multivitamin Syrup",
-            price: "£28",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        },
-        {
-            url: "https://plus.unsplash.com/premium_photo-1690534140957-c24ed3210a22?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: "Multivitamin Effervescent Tablets",
-            price: "£14",
-            stock: "Instock",
-            Location: "Coventry, UK",
-        }
-    ];
+    const [medicine, setMedicine] = useState()
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch('http://127.0.0.1:8000/medicines/api');
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            const jsonData = await response.json();
+            setMedicine(jsonData);
+        };
+        fetchData();
+    }, []);
+    // console.log("medicine", medicine)
     return (
         <>
             {/* <!-- component --> */}
@@ -113,8 +56,8 @@ export const MedicineList = () => {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {medicine.map((item, index) => {
-                                    return <tr>
+                                {medicine && medicine.map((item, index) => {
+                                    return <tr key={item._id.$oid}>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm" key={index}>
                                             <div className="flex items-center">
                                                 <div className="flex-shrink-0 w-10 h-10">

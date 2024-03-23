@@ -15,6 +15,9 @@ import {Cardiologist} from "./common/subModules/Cardiologist.jsx";
 import {Subarticles} from "./common/subModules/Subarticles.jsx";
 import {FindDoctor} from "./modules/FindDoctor/FindDoctor.jsx";
 import {MedicineList} from "./modules/Medicine/MedicineList.jsx";
+import {HealthConcerns} from "./modules/LabTest/HealthConcerns.jsx";
+import {HealthConcernsById} from "./modules/LabTest/HealthConcernsById.jsx";
+import {ShowDoctor} from "./modules/FindDoctor/ShowDoctor.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
@@ -24,6 +27,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     <Routes>
                         <Route exact path="/" element={<Home/>}/>
                         <Route exact path="/doctors" element={<FindDoctor/>}/>
+                        <Route path={"/find-doctors"} element={<ShowDoctor/>}/>
+                        <Route path={"/health-concerns"} element={<HealthConcerns/>}/>
+                        <Route path={"/health-concerns/:id"} element={<HealthConcernsById/>}/>
                         <Route path={"/lab-tests"} element={<LabTest/>}/>
                         <Route
                             path={"/lab-tests/:labTestId"}

@@ -1,7 +1,6 @@
 import axios from "axios";
-import {Labtest} from "../app/url.js";
 
 export function apiBackendSaveBooking(booking) {
     console.log("Booking", booking)
-    return axios.post(Labtest + "/booking", booking);
+    return axios.post('http://127.0.0.1:8000/booking/labtests', booking);
 }

@@ -1,25 +1,27 @@
-import {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "../../app/hooks.js";
-import {apiGetLabTests, getLabTests, SetLabTestId} from "../../features/labTestSlice.js";
-import {Link, useNavigate} from "react-router-dom";
+import {apiGetHealthConcernById, getHealthConcernsById, SetLabTestId} from "../../features/labTestSlice.js";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import {useEffect} from "react";
 
-export const TopBookedTests = () => {
-    const dispatch = useAppDispatch();
-    let data = useAppSelector(getLabTests)
-    const navigate = useNavigate();
+export const HealthConcernsById = () => {
+    const data = useAppSelector(getHealthConcernsById)
+    const {id} = useParams()
+    const navigate = useNavigate()
+    const dispatch = useAppDispatch()
+    console.log("data", data)
     useEffect(() => {
-        dispatch(apiGetLabTests())
-    }, [dispatch]);
-    data = data.slice(0, 5)
+        dispatch(apiGetHealthConcernById(id))
+    }, []);
+
     return (<>
             <h1 className={"text-center text-blue-700 text-3xl font-bold my-10"}>Lab Tests</h1>
-            <div className={"flex gap-5 p-3 m-3 justify-between"}>
+            <div className={"flex gap-5 p-3 m-3"}>
                 {data && data?.length > 0 ?
                     data.map((data) => {
                         return <div
                             className={"flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg justify-between h-[300px]"}
                             key={data._id.$oid}>
-                            <Link to={data._id.$oid}>
+                            <Link to={`/lab-tests/${data._id.$oid}`}>
                                 <div
                                     className="relative flex flex-col">
                                     <div

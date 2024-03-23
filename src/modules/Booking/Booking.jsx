@@ -15,6 +15,7 @@ import {apiSaveBooking, getLabTestId} from "../../features/labTestSlice.js";
 import {useAppDispatch} from "../../app/hooks.js";
 import {useNavigate} from "react-router-dom";
 
+
 const steps = ['Insert Patient Detail', 'Select Patient Address', 'Select Time Slot'];
 
 export const Booking = () => {
@@ -54,6 +55,7 @@ export const Booking = () => {
         navigate('/')
 
     }
+ 
     const afternoon = ['12:00PM', '12:30PM', '01:00PM', '01:30PM', '02:00PM', '02:30PM']
     const evening = ['03:00PM', '03:30PM', '04:00PM', '04:30PM', '05:00PM', '05:30PM']
     return (
